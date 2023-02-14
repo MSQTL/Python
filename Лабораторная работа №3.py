@@ -16,12 +16,7 @@ def ex1():
 #ex1()
 
 def ex2():
-    nums = list()
-    count = int(input("Введите количство чисел в списке: "))
-    for i in range(count):
-        nums.append(int(input("Введите число: ")))
-
-    print(nums)
+    nums = list(map(int, input().split()))
 
     repeatNums = list()
 
@@ -30,17 +25,17 @@ def ex2():
             if repeatNums.count(item) == 0:
                 repeatNums.append(item)
 
-    print(repeatNums)
-
-    length = len(nums)
+    length = len(repeatNums)
     for i in range(length):
         for j in range(0, length - i - 1):
-            if nums[j] > nums[j + 1]:
-                temp = nums[j]
-                nums[j] = nums[j + 1]
-                nums[j + 1] = temp
+            if repeatNums[j] > repeatNums[j + 1]:
+                temp = repeatNums[j]
+                repeatNums[j] = repeatNums[j + 1]
+                repeatNums[j + 1] = temp
 
-    print(nums)
+    print(*repeatNums)
+
+ex2()
 
     
 def ex3():
