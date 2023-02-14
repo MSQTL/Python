@@ -44,4 +44,41 @@ def ex2():
     print(sum)
     
     
+    def ex5():
+    words_count = int(input())
+    words_set = set(input().lower() for i in range(words_count))
+
+    lines_count = int(input())
+
+    unique_words = set()
+    for i in range(lines_count):
+        line = input().lower().split()
+        for word in line:
+            if word not in words_set:
+                unique_words.add(word)
+
+    for word in unique_words:
+        print(word)
+
+    ex5()
     
+    def ex6(password):
+    special_characters = "!@#$%^&*()-+"
+
+    answer = 0
+
+    if not any(char.isdigit() for char in password):
+        answer += 1
+    if not any(char.islower() for char in password):
+        answer += 1
+    if not any(char.isupper() for char in password):
+        answer += 1
+    if not any(char in special_characters for char in password):
+        answer += 1
+
+    missing_length = max(0, 6 - len(password))
+
+    return max(answer, missing_length)
+
+    password = input()
+    print(ex6(password))
