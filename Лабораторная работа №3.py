@@ -56,6 +56,52 @@ def ex3():
     print(sum)
     
     
+def ex4():
+    games = list()
+    count = int(input("Введите количество завршенных игр: "))
+    for i in range(count):
+        games.append(input("Игра: ").split(';'))
+
+    results = dict()
+    points = list()
+    for team1, ball1, team2, ball2 in games:
+        if team1 in results:
+            if team2 in results:
+                continue
+            else:
+                results[team2] = [0] * 5
+        else:
+            results[team1] = [0] * 5
+        if team2 in results:
+            continue
+        else:
+            results[team2] = [0] * 5
+
+    for team1, ball1, team2, ball2 in games:
+        if ball1 == ball2:
+            results[team1][0] += 1
+            results[team2][0] += 1
+            results[team1][2] += 1
+            results[team2][2] += 1
+            results[team1][4] += 1
+            results[team2][4] += 1
+        elif ball1 > ball2:
+            results[team1][0] += 1
+            results[team2][0] += 1
+            results[team1][1] += 1
+            results[team2][3] += 1
+            results[team1][4] += 3
+        else:
+            results[team1][0] += 1
+            results[team2][0] += 1
+            results[team1][3] += 1
+            results[team2][1] += 1
+            results[team2][4] += 3
+
+    for team in results:
+        print(team, *results[team])
+    
+    
 def ex5():
     words_count = int(input())
     words_set = set(input().lower() for i in range(words_count))
